@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quantity Input</title>
 </head>
 <body>
-    <!-- Add an id attribute to the input for JavaScript targeting -->
-    <input type="number" id="quantityInput" pattern="\d*" placeholder="Enter quantity upadted">
+    <input type="number" id="quantityInput" placeholder="Enter quantity">
+    
+    <script>
+      const input = document.getElementById('quantityInput');
+
+      // Define allowed keys as a pattern
+      const allowedKeys = /^[0-9\bBackspaceEscapeArrowLeftArrowRight]*$/;
+
+      // Listen for the keydown event
+      input.addEventListener('keydown', function(event) {
+        // Prevent default behavior for keys not matching the pattern
+        if (!allowedKeys.test(event.key)) {
+          event.preventDefault();
+        }
+      });
+
+      // Additionally, remove any periods that might be inserted
+      input.addEventListener('input', function(event) {
+        // Remove any periods that might have been inserted
+        input.value = input.value.replace('.', '');
+      });
+    </script>
 </body>
-<script>
-  const input = document.getElementById('quantityInput');
-
-  // Listen for the keydown event
-  input.addEventListener('keydown', function(event) {
-    // Check if the key pressed is a period (dot)
-    if (event.key === '.' || event.key === 'Decimal') {
-      // Prevent the default action, which is to insert the period
-      event.preventDefault();
-    }
-  });
-
-  // Additionally, listen for the input event to handle cases where input is already present
-  input.addEventListener('input', function(event) {
-    // Remove any periods that might have been inserted
-    input.value = input.value.replace('.', '');
-  });
-</script>
 </html>
