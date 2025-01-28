@@ -6,16 +6,8 @@
     <title>Quantity Input</title>
 </head>
 <body>
-    <input type="text" id="quantityInput" placeholder="Enter quantity" step="1"
-                  onChange="handleChange(event)">
+<input type="number" onchange="handleChange(this.value)" oninput="this.value = this.value.replace(/[^0-9]/, '')"/>
 
-    <script>
 
-    function handleChange(event) {
-      if (!(Number(inputValue) >= 0 && Number(inputValue) <= 9)) {
-        event.preventDefault();
-      }
-    }
-    </script>
 </body>
 </html>
