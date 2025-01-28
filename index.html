@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="number" id="quantityInput" pattern="\d*" placeholder="Enter quantity" onkeydown="onKeyDown(event)">
+    <input type="number" id="quantityInput" pattern="\d*" placeholder="Enter quantity" onkeydown="onKeyDown(event)"  >
 </body>
 <script>
   function onKeyDown(event) {
@@ -15,5 +15,9 @@
             }
 
   }
+  input.addEventListener('input', function(event) {
+    // Remove any periods that might have been inserted
+    input.value = input.value.replace('.', '');
+  });
 </script>
 </html>
