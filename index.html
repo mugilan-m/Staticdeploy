@@ -6,17 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="tel" onkeydown="handleInput(event)">
+<input type="text" id="quantityInput" placeholder="Enter quantity" />
 </body>
 <script>
-   const handleInput = (event) => {
-     //This alert is for demonstration, remove it in production.
-     //alert("hi");
+  const input = document.getElementById('quantityInput');
 
-     // Check if the key pressed is not a number, backspace, or escape.
-     if (!/^[0-9\b]$/.test(event.key)) {
-       event.preventDefault();
-     }
-   };
+  input.addEventListener('keydown', function(event) {
+    // Check if the key pressed is a period (dot)
+    if (event.key === '.' || event.key === 'Decimal') {
+      // Prevent the default action, which is to insert the period
+      event.preventDefault();
+    }
+  });
 </script>
 </html>
+
+
+
