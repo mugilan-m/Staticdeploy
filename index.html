@@ -6,21 +6,25 @@
     <title>Quantity Input</title>
 </head>
 <body>
-    <input type="number" id="quantityInput" placeholder="Enter quantity update" step="1" onkeydown="handleKeyDown(event)" oninput="handleInput(event)">
-    
+    <input type="number" id="quantityInput" placeholder="Enter quantity" step="1" onkeydown="handleKeyDown(event)" oninput="handleInput(event)">
+
     <script>
     function handleKeyDown(event) {
-      const allowedKeys = /[0-9]|\b|Backspace|Escape/g; //Corrected Regex
-      if (!allowedKeys.test(event.key)) {
-        event.preventDefault();
-      }
+        // Allow only numbers, backspace, escape, and optionally arrow keys (for cursor movement)
+        const allowedKeys = /[0-9]|\b|Backspace|Escape|ArrowUp|ArrowDown|ArrowLeft|ArrowRight/g;
+        if (!allowedKeys.test(event.key)) {
+            event.preventDefault();
+        }
     }
 
     function handleInput(event) {
         let inputValue = event.target.value;
-        // Remove any non-digit characters
+        // Remove any non-digit characters and any periods
         inputValue = inputValue.replace(/[^0-9]/g, '');
-        event.target.value = inputValue;
+        //Set the cursor to the end of the input after cleaning
+        const inputElement = event.target;
+        inputElement.value = inputValue;
+        inputElement.setSelectionRange(inputValue.length, inputValue.length);
     }
     </script>
 </body>
