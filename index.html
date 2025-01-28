@@ -6,11 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-  <input type="number" pattern="[0-9]*" inputmode="numeric">
+    <!-- Add an id attribute to the input for JavaScript targeting -->
+    <input type="number" id="quantityInput" pattern="\d*" placeholder="Enter quantity">
 </body>
 <script>
   const input = document.getElementById('quantityInput');
 
+  // Listen for the keydown event
   input.addEventListener('keydown', function(event) {
     // Check if the key pressed is a period (dot)
     if (event.key === '.' || event.key === 'Decimal') {
@@ -18,8 +20,11 @@
       event.preventDefault();
     }
   });
+
+  // Additionally, listen for the input event to handle cases where input is already present
+  input.addEventListener('input', function(event) {
+    // Remove any periods that might have been inserted
+    input.value = input.value.replace('.', '');
+  });
 </script>
 </html>
-
-
-
