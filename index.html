@@ -9,24 +9,24 @@
     <input type="number" id="quantityInput" placeholder="Enter quantity" step="1" >
     
     <script>
-      // const input = document.getElementById('quantityInput');
+      const input = document.getElementById('quantityInput');
 
-      // // Define allowed keys as a pattern
-      // const allowedKeys = /[0-9]|\b|Backspace|Escape|/g;
+      // Define allowed keys as a pattern
+      const allowedKeys = /[0-9]|\b|Backspace|Escape|/g;
 
-      // // Listen for the keydown event
-      // input.addEventListener('keydown', function(event) {
-      //   // Prevent default behavior for keys not matching the pattern
-      // if (!allowedKeys.test(event.key) || event.key === '.') {
-      //   event.preventDefault();
-      // }
-      // });
+      // Listen for the keydown event
+      input.addEventListener('keydown', function(event) {
+        // Prevent default behavior for keys not matching the pattern
+      if (!allowedKeys.test(event.key) || event.key === '.') {
+        event.preventDefault();
+      }
+      });
 
-      // // Additionally, remove any periods that might be inserted
-      // input.addEventListener('input', function(event) {
-      //   // Remove any periods that might have been inserted
-      //   input.value = input.value.replace('.', '');
-      // });
+      // Additionally, remove any periods that might be inserted
+      input.addEventListener('input', function(event) {
+        // Remove any periods that might have been inserted
+        input.value = input.value.replace('.', '');
+      });
     </script>
 </body>
 </html>
